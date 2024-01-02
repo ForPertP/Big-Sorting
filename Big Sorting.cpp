@@ -14,21 +14,6 @@ string rtrim(const string &);
 
 vector<string> bigSorting(vector<string> unsorted)
 {
-    sort(unsorted.begin(),unsorted.end(),
-        [](const string &i, const string &j) -> bool
-        {
-            int n = i.length();
-            int m = j.length();
-            if (n == m)
-            {
-               return (i < j);
-            }
-            
-            return n < m;
-        }
-    );
-    
-    return unsorted;
 }
 
 int main()
@@ -66,3 +51,24 @@ int main()
     return 0;
 }
 
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
