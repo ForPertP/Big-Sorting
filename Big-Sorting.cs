@@ -24,6 +24,20 @@ class Result
 
     public static List<string> bigSorting(List<string> unsorted)
     {
+        unsorted.Sort((i, j) =>
+        {
+            int n = i.Length;
+            int m = j.Length;
+            
+            if (n == m)
+            {
+                return string.Compare(i, j, StringComparison.Ordinal);
+            }
+
+            return n.CompareTo(m);
+        });
+
+        return unsorted;
     }
 
 }
