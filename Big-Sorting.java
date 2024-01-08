@@ -20,7 +20,21 @@ class Result {
      */
 
     public static List<String> bigSorting(List<String> unsorted) {
+        Collections.sort(unsorted, new Comparator<String>() {
+            @Override
+            public int compare(String i, String j) {
+                int n = i.length();
+                int m = j.length();
 
+                if (n == m) {
+                    return i.compareTo(j);
+                }
+
+                return Integer.compare(n, m);
+            }
+        });
+
+        return unsorted;
     }
 
 }
